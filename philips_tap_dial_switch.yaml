@@ -68,11 +68,11 @@ action:
       - '{{ step_size >= 8 }}'
       - '{{ step_size <= 14 }}'
       - condition: state
-        target: !input dimmable_light
+        entity_id: !input dimmable_light
         attribute: color_mode
         state: color_temp
       - condition: numeric_state
-        target: !input dimmable_light
+        entity_id: !input dimmable_light
         attribute: color_temp
         above: 499
       sequence:
