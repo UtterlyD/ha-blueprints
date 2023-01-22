@@ -1,7 +1,7 @@
 blueprint:
   name: Philips Tap Dial Switch UtterlyD
   description: 'Control brightness of one light with the dial on a Philips Hue Tap Switch. Use the four buttons
-    to assign your own actions.'
+    to assign your own actions. :)'
   source_url: https://github.com/UtterlyD/ha-blueprints/blob/main/philips_tap_dial_switch.yaml
   domain: automation
   input:
