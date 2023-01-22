@@ -76,7 +76,7 @@ action:
           target: !input dimmable_light
           data:
             transition: 0.1
-            color_temp: '{{ color_temp }}'
+            color_temp: "{{ color_temp - 10 }}"
     - conditions:
       - '{{ event == "step_with_on_off" }}'
       - '{{ step_mode == "StepMode.Down" }}'
