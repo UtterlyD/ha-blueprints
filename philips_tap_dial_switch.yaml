@@ -53,7 +53,7 @@ variables:
   scene: "{{ trigger.event.data.args[1] }}"
   step_mode: "{{ trigger.event.data.params.step_mode }}"
   step_size: "{{ trigger.event.data.params.step_size }}"
-  colour_mode: "{{ state_attr('light.office_ceiling_huelight', 'color_mode') }}"
+  colour_mode: "{{ state_attr(!input dimmable_light, 'color_mode') }}"
 
 trigger:
 - platform: event
