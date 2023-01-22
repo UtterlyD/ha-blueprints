@@ -75,7 +75,7 @@ action:
         - service: light.turn_on
           data:
             transition: 0.1
-            color_temp: "{{state_attr(!input dimmable_light,'color_temp') - 10}}"
+            color_temp: '{{ color_temp }}'
           target: !input dimmable_light
     - conditions:
       - '{{ event == "step_with_on_off" }}'
