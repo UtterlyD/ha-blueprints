@@ -54,6 +54,7 @@ variables:
   step_mode: "{{ trigger.event.data.params.step_mode }}"
   step_size: "{{ trigger.event.data.params.step_size }}"
   colour_mode: "{{ state_attr(dimmable_light.entity_id, 'color_mode') }}"
+  colour_temp: "{{ state_attr(dimmable_light.entity_id, 'color_temp') }}"
 
 trigger:
 - platform: event
@@ -69,14 +70,7 @@ action:
       - '{{ step_size >= 8 }}'
       - '{{ step_size <= 14 }}'
       - "{{ colour_mode == 'color_temp' }}"
-      - condition: state
-        entity_id: !input dimmable_light
-        attribute: color_mode
-        state: color_temp
-      - condition: numeric_state
-        entity_id: !input dimmable_light
-        attribute: color_temp
-        above: 499
+      - "{{ color_temp > 499 }}"
       sequence:
         - service: light.turn_on
           data:
