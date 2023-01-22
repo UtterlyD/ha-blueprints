@@ -53,6 +53,7 @@ variables:
   scene: "{{ trigger.event.data.args[1] }}"
   step_mode: "{{ trigger.event.data.params.step_mode }}"
   step_size: "{{ trigger.event.data.params.step_size }}"
+  colour_mode: "{{ state_attr('light.office_ceiling_huelight', 'color_mode') }}"
 
 trigger:
 - platform: event
@@ -67,6 +68,7 @@ action:
       - '{{ step_mode == "StepMode.Up" }}'
       - '{{ step_size >= 8 }}'
       - '{{ step_size <= 14 }}'
+      - '{{ colour_mode == 'color_temp' }}'
       - condition: state
         entity_id: !input dimmable_light
         attribute: color_mode
