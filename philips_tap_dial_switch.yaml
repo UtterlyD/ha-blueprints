@@ -65,12 +65,21 @@ action:
     - conditions:
       - '{{ event == "step_with_on_off" }}'
       - '{{ step_mode == "StepMode.Up" }}'
+      - '{{ step_size >= 8 && step_size <= 14 }}'
+      - condition: state
+        entity_id: !input dimmable_light
+        attribute: color_mode
+        state: color_temp
+      - condition: numeric_state
+        entity_id: !input dimmable_light
+        attribute: color_temp
+        above: 499
       sequence:
         - service: light.turn_on
-          target: !input dimmable_light
           data:
-            brightness_step_pct: '{{ step_size }}'
-            transition: 1
+            transition: 0.1
+            color_temp: "{{state_attr(!input dimmable_light,'color_temp') - 10}}"
+          target: !input dimmable_light
     - conditions:
       - '{{ event == "step_with_on_off" }}'
       - '{{ step_mode == "StepMode.Down" }}'
