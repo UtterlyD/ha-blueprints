@@ -53,8 +53,9 @@ variables:
   scene: "{{ trigger.event.data.args[1] }}"
   step_mode: "{{ trigger.event.data.params.step_mode }}"
   step_size: "{{ trigger.event.data.params.step_size }}"
-  colour_mode: "{{ state_attr(!input dimmable_light.entity_id, 'color_mode') }}"
-  colour_temp: "{{ state_attr(!input dimmable_light.entity_id, 'color_temp') }}"
+  light_id: "{{ dimmable_light.entity_id }}"
+  colour_mode: "{{ state_attr(light_id, 'color_mode') }}"
+  colour_temp: "{{ state_attr(light_id, 'color_temp') }}"
 
 trigger:
 - platform: event
