@@ -70,7 +70,7 @@ action:
       - '{{ step_size >= 8 }}'
       - '{{ step_size <= 14 }}'
       - "{{ colour_mode == 'color_temp' }}"
-      - "{{ color_temp > 499 }}"
+      - '{{ color_temp > 499 }}'
       sequence:
         - service: light.turn_on
           data:
